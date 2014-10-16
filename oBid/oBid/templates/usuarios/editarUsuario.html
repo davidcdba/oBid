@@ -1,0 +1,12 @@
+{% extends "plantilla.html" %}
+	{% block secion-cuerpo %}
+<div class="container">
+	<div style="padding-top: 65px;padding-bottom: 0px;">
+	<h2>Modificar Datos</h2>
+
+	<form id='form' method='post' enctype="multipart/form-data" action=''>{% csrf_token %}
+	    <table class='formTable'>{{form}}</table>
+		<p><input type='submit' class="btn btn-default" value='Modificar'></p>
+	</form>
+</div><div>
+	{% endblock  %}

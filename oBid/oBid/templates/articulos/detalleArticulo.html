@@ -1,0 +1,43 @@
+{% extends "plantilla.html" %}
+	{% block secion-cuerpo %}
+<div class="container">
+	<div style="padding-top: 65px;padding-bottom: 0px;">
+
+{% if articulo %}
+<h2>{{articulo.titulo}}</h2>
+<img src="/media/{{articulo.imagen}}" class="img-circle" width="240px" /><br/>
+<p>{{articulo.descripcion}}</p>
+<b>Forma de pago:</b>{% if articulo.formaPago == 'PA' %}Paypal{%else%}Transferencia Bancaria{%endif%}<br/>
+ <b>Gastos de envio:</b>{{articulo.gastosEnvio}}€<br/> 
+ <b>Vendido por:</b><img src="/media/{{articulo.Usuario.avatar}}" class="img-circle" width="50px" />{{articulo.Usuario.username}}<br/> 		
+			{%if tiempo < articulo.fechaFin %}
+				{%if articulo.tipoVenta == 'SB' %}
+				{% if puja == 0 %}
+					La puja actual es de {{puja}}<br/>
+				{%else%}
+					<p style="border: 1px solid">
+					Lista de pujadores<br>
+					{%for p in pujarlist %}
+						<img src="/media/{{p.usuario.avatar}}" class="img-circle" width="30px" />{{p.usuario.username}} con una puja de {{p.cantidad}}<br>
+					{%endfor%}
+				</p>
+				{%endif%}
+				<form id='form' method='post'  action='/articulos/detalle/{{articulo.pk}}'>{% csrf_token %}
+					{{form}}<button type="submit" class="btn btn-success">Pujar</button>
+				{%else%}
+					<h4>Precio de venta {{articulo.pujaMinima}}</h4>
+				 <a href='/articulos/compra/{{articulo.pk}}' ><button type="button" class="btn btn-primary btn-lg">Comprar</button></a>
+				{%endif%}
+			{%else%}
+				<h4>Articulo Vendido</h4>
+			{% endif %}
+		<a href="/usuarios/NuevoMensaje"><button type="button" class="btn btn-primary btn-lg active"><span class="glyphicon glyphicon-send"></span>
+
+		
+
+	{% else %}
+		<p>No hay Articulos disponibles.</p>
+	{% endif %}
+</div>
+</div>
+	{% endblock  %}

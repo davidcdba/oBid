@@ -1,0 +1,18 @@
+{% extends "plantilla.html" %}
+	{% block secion-cuerpo %}
+<div class="container">
+	<div style="padding-top: 65px;padding-bottom: 0px;">
+	<h2>Entra en oBid</h2>
+
+<form  role="form" action="/usuarios/login" method="POST">{% csrf_token %}
+            <div class="form-group" >
+              <input type="text" name="username" placeholder="Usuario" >
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" placeholder="Clave" >
+            </div>
+            <button type="submit" class="btn btn-success">Logeate</button>
+
+      <a href="/usuarios/nuevo"><button type="button" class="btn btn-primary">Registrate</button></a>
+</div><div>
+	{% endblock  %}

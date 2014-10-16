@@ -1,0 +1,54 @@
+{% extends "plantilla.html" %}
+	{% block secion-cuerpo %}
+<div class="container">
+	<div style="padding-top: 65px;padding-bottom: 0px;">
+<h2>Mis compras</h2>
+<div class="table-responsive">
+  <table class="table">
+		<tr>
+			<th>Foto</th>
+			<th>Titulo</th>
+			<th>Precio Compra</th>
+			<th>Precio Envio</th>
+		</tr>
+
+
+		
+		{% for c in comprasList %}
+			<tr>
+			<td><img src="/media/{{c.articulo.imagen}}" width=50px /></td>
+			<td><a href="/articulos/detalle/{{c.articulo.pk}}">{{c.articulo.titulo}}</a></td>
+			<td>{{c.articulo.pujaMinima}}</td>
+			<td>{{c.articulo.gastosEnvio}}</td>
+
+		</tr>
+		{% endfor %}
+</table>
+	</div>
+<h2>Mis Pujas</h2>
+<div class="table-responsive">
+  <table class="table">
+		<tr>
+			<th>Foto</th>
+			<th>Titulo</th>
+			<th>Puja</th>
+			<th>Precio Envio</th>
+		</tr>
+
+
+		
+		{% for p in listPujas %}
+			<tr>
+			<td><img src="/media/{{p.articulo.imagen}}" width=50px /></td>
+			<td><a href="/articulos/detalle/{{p.articulo.pk}}">{{p.articulo.titulo}}</a></td>
+			<td>{{p.cantidad}}</td>
+			<td>{{p.articulo.gastosEnvio}}</td>
+
+		</tr>
+		{% endfor %}
+</table>
+	</div>		
+
+</div>
+</div>
+	{% endblock  %}

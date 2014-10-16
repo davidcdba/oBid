@@ -1,0 +1,32 @@
+{% extends "plantilla.html" %}
+	{% block secion-cuerpo %}
+<div class="container">
+	<div style="padding-top: 65px;padding-bottom: 0px;">
+<h2>Lista de articulos</h2>
+{% if Articulos %}
+<div class="table-responsive">
+  <table class="table">
+		<tr>
+			<th>Foto</th>
+			<th>Titulo</th>
+			<th>Forma de pago</th>
+			<th>Fecha Fin</th>
+		</tr>
+		{% for articulo in Articulos %}
+			{%if tiempo < articulo.fechaFin %}
+				<tr>
+				<td><img src="/media/{{articulo.imagen}}" width=50px /></td>
+				<td><a href="/articulos/detalle/{{articulo.pk}}">{{articulo.titulo}}</a></td>
+				<td><a href="/articulos/detalle/{{articulo.pk}}">{% if articulo.formaPago == 'PA' %}Paypal{%else%}Transferencia Bancaria{%endif%}</a></td>
+				<td>{{articulo.fechaFin}}</td>
+			{% endif %}
+		{% endfor %}
+
+		
+		</table></div>
+	{% else %}
+		<p>No hay Categorias disponibles.</p>
+	{% endif %}
+</div>
+</div>
+	{% endblock  %}

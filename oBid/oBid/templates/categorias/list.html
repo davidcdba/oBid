@@ -1,0 +1,20 @@
+{% extends "plantilla.html" %}
+	{% block secion-cuerpo %}
+<div class="container">
+	<div style="padding-top: 65px;padding-bottom: 0px;">
+<h2>Lista de categorias</h2>
+{% if categoriaList %}
+
+		<ul>
+		{% for categoria in categoriaList %}
+			
+			<li><img src="/media/{{categoria.imagen}}" width=50px /><a href="/articulos/{{categoria.pk}}">{{categoria.nombre}}</a></li>
+		{% endfor %}
+
+		</ul>
+	{% else %}
+		<p>No hay Categorias disponibles.</p>
+	{% endif %}
+</div>
+</div>
+	{% endblock  %}

@@ -1,0 +1,35 @@
+{% extends "plantilla.html" %}
+	{% block secion-cuerpo %}
+<div class="container">
+	<div style="padding-top: 65px;padding-bottom: 0px;">
+<h2>Recibidos</h2>
+{% if mensajes %}
+<div class="table-responsive">
+  <table class="table">
+		<tr>
+			<th>De:</th>
+			<th>asunto</th>
+			<th>Mensaje</th>
+			
+		</tr>
+		{% for m in mensajes %}
+			
+				<tr>
+				<td><img src="/media/{{m.usuarioEmisor.avatar}}" width=50px />{{m.usuarioEmisor.username}}</td>
+				<td>{{m.asunto}}</td>
+				<td>{{m.mensaje}}</td>
+				
+			</tr>
+			
+		{% endfor %}
+
+		
+		</table></div>
+		<a href="/usuarios/NuevoMensaje"><button type="button" class="btn btn-primary btn-lg active"><span class="glyphicon glyphicon-send"></span>
+Enviar Mensaje</button></a>
+	{% else %}
+		<p>No hay mensajes disponibles.</p>
+	{% endif %}
+</div>
+</div>
+	{% endblock  %}

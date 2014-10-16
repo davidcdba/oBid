@@ -1,0 +1,16 @@
+Para iniciar el proyecto de Django
+	django-admin.py startproject <Nombre_del_proyecto>
+
+ LANZAR SERVIDOR WEB EN PUERTO 8000
+$ python manage.py runserver 8000
+
+## CREAR UNA APLICACION
+$ python manage.py startapp <nombre_app>
+## VER LAS SENTENCIAS SQL QUE DJANGO CREARÁ EN LA B.D. DE NUESTRA APP
+	python manage.py sql oBid
+
+## SINCRONIZAR LA BASE DE DATOS (la primera vez, crea la B.D.)
+	python manage.py syncdb
+
+## ACCEDER A LA SHELL
+	python manage.py shell

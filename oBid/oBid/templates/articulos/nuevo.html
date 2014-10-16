@@ -1,0 +1,14 @@
+{% extends "plantilla.html" %}
+	{% block secion-cuerpo %}
+	<div style="padding-top: 65px;padding-bottom: 0px;">
+<div class="container">
+	<h2>Nuevo Articulo</h2>
+
+	<form id='form' method='post' enctype='multipart/form-data' action=''>{% csrf_token %}
+	    <table class='formTable'>{{form}}</table>
+	    <h4>La fecha Fin del articulo sera {{tiempoFin}}</h4>
+		<p><input type='submit' class="btn btn-default" value='Registrar'></p>
+	</form>
+</div>
+</div>
+	{% endblock  %}
